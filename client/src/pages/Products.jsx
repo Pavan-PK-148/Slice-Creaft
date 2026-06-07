@@ -271,17 +271,21 @@ export default function Products() {
                   <div className="relative overflow-hidden h-72">
 
   <img
-    src={
-      pizza.image.startsWith("http")
-        ? pizza.image
-        : `${assetBaseUrl}/uploads/${pizza.image}` 
-    }
-    alt={pizza.name}
-    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-    onError={(e) => {
-      e.target.src = "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=600";
-    }}
-  />
+  src={
+    pizza.image.startsWith("http")
+      ? pizza.image
+      : pizza.image.startsWith("/uploads/")
+      ? `${assetBaseUrl}${pizza.image}` // If it already has /uploads/, just stick it to the base domain URL
+      : pizza.image.startsWith("/")
+      ? `${assetBaseUrl}/uploads${pizza.image}`
+      : `${assetBaseUrl}/uploads/${pizza.image}`
+  }
+  alt={pizza.name}
+  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+  onError={(e) => {
+    e.target.src = "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=600";
+  }}
+/>
 
   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 

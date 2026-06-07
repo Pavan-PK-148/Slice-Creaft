@@ -1,0 +1,18 @@
+# Dependency runtime trees
+node_modules/
+
+# Active Production Configuration Keys (CRITICAL: Security Hazard)
+.env
+
+# Local runtime asset directories (Avoid pushing customer orders/images)
+uploads/
+
+# Application execution logs
+npm-debug.log*
+logs/
+*.log
+
+# Workspace metadata configs
+.DS_Store
+.vscode/
+.idea/
